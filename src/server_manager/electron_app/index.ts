@@ -238,6 +238,13 @@ function main() {
   app.on('window-all-closed', () => {
     app.quit();
   });
+
+  // This event fires whenever the app's window receives focus.
+  app.on('browser-window-focus', () => {
+    if (mainWindow) {
+      mainWindow.webContents.send('window-has-focus');
+    }
+  });
 }
 
 main();
